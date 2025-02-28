@@ -26,6 +26,7 @@ import java.util.stream.*;
 import org.ice4j.*;
 import org.ice4j.ice.*;
 import org.ice4j.socket.*;
+import org.ice4j.util.NetworkInterfaceUtils;
 
 import static org.ice4j.ice.harvest.HarvestConfig.config;
 
@@ -271,7 +272,7 @@ public class HostCandidateHarvester
     {
         try
         {
-            return NetworkInterface.networkInterfaces()
+            return NetworkInterfaceUtils.networkInterfaces()
                     .filter(HostCandidateHarvester::isInterfaceAllowed).collect(Collectors.toList());
         }
         catch (IOException ioe)
