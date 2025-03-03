@@ -18,10 +18,10 @@ dependencies {
     implementation gradleApi()
     //implementation localGroovy()
     //implementation "com.google.code.gson:gson:2.11.0"
-    implementation libs.jitsi.utils
-    implementation libs.jicoco.config
-    implementation libs.weupnp
-    implementation libs.sdp
+    api libs.jitsi.utils
+    api libs.jicoco.config
+    api libs.weupnp
+    api libs.sdp
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
 }
 
