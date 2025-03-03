@@ -314,6 +314,9 @@ public class TransportAddress
         if ( getTransport() != dst.getTransport() )
             return false;
 
+        if (isIPv6() != dst.isIPv6())
+            return false;
+
         //may add more unreachability conditions here in the future;
 
         return true;
