@@ -249,6 +249,12 @@ public class MappingCandidateHarvesters
 
             for (InetAddress localInetAddress : localAddresses)
             {
+                if (localInetAddress instanceof Inet6Address)
+                {
+                    // This is disabled, because it is broken for an unknown
+                    // reason and it is not currently needed.
+                    continue;
+                }
 
                 TransportAddress localAddress = new TransportAddress(localInetAddress, 0, Transport.UDP);
 

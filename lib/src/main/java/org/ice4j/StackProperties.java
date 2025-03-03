@@ -98,7 +98,7 @@ public class StackProperties
      * IPv6 addresses to be able to reach globally routable ones.
      */
     public static final String ALLOW_LINK_TO_GLOBAL_REACHABILITY
-                                = "org.ice4j.ALLOW_LINK_TO_GLOBAL_REACHABILITY";
+                                = "true";
 
     /**
      * The name of the property that allows us to tell the stack to always

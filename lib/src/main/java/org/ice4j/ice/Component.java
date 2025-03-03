@@ -747,19 +747,19 @@ public class Component
      */
     private LocalCandidate findRedundant(LocalCandidate cand)
     {
-        synchronized (localCandidates)
-        {
-            for (LocalCandidate redundantCand : localCandidates)
-            {
-                if ((cand != redundantCand)
-                        && cand.getTransportAddress().equals(
-                                redundantCand.getTransportAddress())
-                        && cand.getBase().equals(redundantCand.getBase()))
-                {
-                    return redundantCand;
-                }
-            }
-        }
+//        synchronized (localCandidates)
+//        {
+//            for (LocalCandidate redundantCand : localCandidates)
+//            {
+//                if ((cand != redundantCand)
+//                        && cand.getTransportAddress().equals(
+//                                redundantCand.getTransportAddress())
+//                        && cand.getBase().equals(redundantCand.getBase()))
+//                {
+//                    return redundantCand;
+//                }
+//            }
+//        }
 
         return null;
     }
