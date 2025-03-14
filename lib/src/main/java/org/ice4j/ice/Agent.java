@@ -20,6 +20,7 @@ package org.ice4j.ice;
 import org.ice4j.*;
 import org.ice4j.ice.harvest.*;
 import org.ice4j.stack.*;
+import org.ice4j.util.CustomDuration;
 import org.ice4j.util.EmptyLogger;
 import org.ice4j.util.PeriodicRunnable;
 import org.jitsi.utils.concurrent.*;
@@ -30,7 +31,6 @@ import java.io.*;
 import java.math.*;
 import java.net.*;
 import java.security.*;
-import java.time.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.logging.*;
@@ -2653,13 +2653,13 @@ public class Agent
         }
 
         @Override
-        protected Duration getDelayUntilNextRun()
+        protected CustomDuration getDelayUntilNextRun()
         {
             if (shouldRunStunKeepAlive())
             {
                 if (keepAliveSent == 0)
                 {
-                    return Duration.ZERO;
+                    return CustomDuration.ZERO;
                 }
                 else
                 {
@@ -2668,10 +2668,10 @@ public class Agent
                     {
                         r = 0.8d + ThreadLocalRandom.current().nextDouble() * 0.4;
                     }
-                    return Duration.ofMillis((long) (consentFreshnessInterval * r));
+                    return CustomDuration.ofMillis((long) (consentFreshnessInterval * r));
                 }
             }
-            return Duration.ofMillis(-1);
+            return CustomDuration.ofMillis(-1L);
         }
 
         @Override

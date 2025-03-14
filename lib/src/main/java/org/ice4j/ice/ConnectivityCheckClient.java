@@ -18,7 +18,6 @@
 package org.ice4j.ice;
 
 import java.net.*;
-import java.time.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -995,13 +994,13 @@ class ConnectivityCheckClient
          * @return  the number milliseconds to wait before we send the next
          * check.
          */
-        protected Duration getDelayUntilNextRun()
+        protected CustomDuration getDelayUntilNextRun()
         {
             if (firstRun)
             {
                 /* Run first check immediately. */
                 firstRun = false;
-                return Duration.ZERO;
+                return CustomDuration.ZERO;
             }
 
             int activeCheckLists = parentAgent.getActiveCheckListCount();
@@ -1013,7 +1012,7 @@ class ConnectivityCheckClient
                 activeCheckLists = 1;
             }
 
-            return Duration.ofMillis(parentAgent.calculateTa() * activeCheckLists);
+            return CustomDuration.ofMillis(parentAgent.calculateTa() * activeCheckLists);
         }
     }
 

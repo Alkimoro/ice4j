@@ -2,7 +2,6 @@ package org.ice4j.util;
 
 import org.jitsi.utils.logging2.*;
 
-import java.time.*;
 import java.util.concurrent.*;
 
 /**
@@ -81,7 +80,7 @@ public abstract class PeriodicRunnable
      * performed with specified delay, negative value if execution should not
      * be done.
      */
-    protected abstract Duration getDelayUntilNextRun();
+    protected abstract CustomDuration getDelayUntilNextRun();
 
     /**
      * Periodically executed method on {@link #executor}'s thread.
@@ -99,7 +98,7 @@ public abstract class PeriodicRunnable
             return;
         }
 
-        final Duration delay =
+        final CustomDuration delay =
             getDelayUntilNextRun();
 
         scheduleNextRun(delay);
@@ -142,7 +141,7 @@ public abstract class PeriodicRunnable
      * next run.
      * @param delay delay before next execution of {@link #run()}.
      */
-    private void scheduleNextRun(Duration delay)
+    private void scheduleNextRun(CustomDuration delay)
     {
         synchronized (syncRoot)
         {
@@ -220,7 +219,7 @@ public abstract class PeriodicRunnable
         {
             if (running)
             {
-                final Duration delayMillis =
+                final CustomDuration delayMillis =
                     getDelayUntilNextRun();
 
                 scheduleNextRun(delayMillis);
@@ -242,13 +241,13 @@ public abstract class PeriodicRunnable
     static PeriodicRunnable create(
         ScheduledExecutorService timer,
         ExecutorService executor,
-        Duration period,
+        CustomDuration period,
         Runnable r)
     {
         return new PeriodicRunnable(timer, executor)
         {
             @Override
-            protected Duration getDelayUntilNextRun()
+            protected CustomDuration getDelayUntilNextRun()
             {
                 return period;
             }

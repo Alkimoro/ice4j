@@ -19,11 +19,11 @@ package org.ice4j.stack;
 
 import org.ice4j.*;
 import org.ice4j.message.*;
+import org.ice4j.util.CustomDuration;
 import org.ice4j.util.PeriodicRunnable;
 import org.jitsi.utils.concurrent.*;
 
 import java.io.*;
-import java.time.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
 import java.util.logging.*;
@@ -446,9 +446,9 @@ public class StunClientTransaction
         }
 
         @Override
-        protected Duration getDelayUntilNextRun()
+        protected CustomDuration getDelayUntilNextRun()
         {
-            return Duration.ofMillis(nextRetransmissionDelay);
+            return CustomDuration.ofMillis((long) nextRetransmissionDelay);
         }
 
         @Override
