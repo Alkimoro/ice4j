@@ -19,7 +19,9 @@ dependencies {
     //implementation localGroovy()
     //implementation "com.google.code.gson:gson:2.11.0"
     api libs.jitsi.utils
-    api libs.jicoco.config
+    api(libs.jicoco.config) {
+        exclude group: 'org.jitsi', module: 'jitsi-utils'
+    }
     api libs.weupnp
     api libs.sdp
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
