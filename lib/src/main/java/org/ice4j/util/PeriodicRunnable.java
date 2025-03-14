@@ -16,7 +16,7 @@ public abstract class PeriodicRunnable
     /**
      * The {@link Logger} used by the {@link PeriodicRunnable} class for logging output.
      */
-    private final static Logger logger = new LoggerImpl(PeriodicRunnable.class.getName());
+    private final static Logger logger = new EmptyLogger();
 
     /**
      * A timer to perform periodic scheduling of {@link #run()} execution

@@ -20,10 +20,10 @@ package org.ice4j.ice;
 import org.ice4j.*;
 import org.ice4j.ice.harvest.*;
 import org.ice4j.stack.*;
+import org.ice4j.util.EmptyLogger;
 import org.ice4j.util.PeriodicRunnable;
 import org.jitsi.utils.concurrent.*;
 import org.jitsi.utils.logging2.Logger;
-import org.jitsi.utils.logging2.*;
 
 import java.beans.*;
 import java.io.*;
@@ -332,7 +332,7 @@ public class Agent
         }
         else
         {
-            logger = new LoggerImpl(Agent.class.getName(), new LogContext("ufrag", this.ufrag));
+            logger = new EmptyLogger();
         }
 
         connCheckServer = new ConnectivityCheckServer(this);
