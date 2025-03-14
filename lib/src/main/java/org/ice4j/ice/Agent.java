@@ -2167,7 +2167,7 @@ public class Agent
         {
             if (terminationFuture == null)
             {
-                long terminationDelay = config.getTerminationDelay().toMillis();
+                long terminationDelay = config.getTerminationDelay();
 
                 if (terminationDelay > 0)
                 {
@@ -2636,12 +2636,12 @@ public class Agent
      */
     private final class StunKeepAliveRunner extends PeriodicRunnable
     {
-        private final long consentFreshnessInterval = config.getConsentFreshnessInterval().toMillis();
+        private final long consentFreshnessInterval = config.getConsentFreshnessInterval();
         private final int originalConsentFreshnessWaitInterval
-                = (int) config.getConsentFreshnessOriginalWaitInterval().toMillis();
+                = (int) config.getConsentFreshnessOriginalWaitInterval();
 
         private final int maxConsentFreshnessWaitInterval
-                = (int) config.getConsentFreshnessMaxWaitInterval().toMillis();
+                = (int) config.getConsentFreshnessMaxWaitInterval();
 
         private final int consentFreshnessMaxRetransmissions = config.getMaxConsentFreshnessRetransmissions();
 

@@ -16,60 +16,26 @@
 
 package org.ice4j.ice
 
-import org.jitsi.metaconfig.config
-import org.ice4j.util.CustomDuration
-import org.jitsi.config.JitsiConfig.Companion.newConfig as configSource
-
 class AgentConfig {
-    val consentFreshnessInterval: CustomDuration by config {
-        "org.ice4j.ice.CONSENT_FRESHNESS_INTERVAL".from(configSource)
-            .convertFrom<Long> { CustomDuration.ofMillis(it) }
-        "ice4j.consent-freshness.interval".from(configSource)
-    }
+    var consentFreshnessInterval = 15 * 1000
 
-    val randomizeConsentFreshnessInterval: Boolean by config {
-        "ice4j.consent-freshness.randomize-interval".from(configSource)
-    }
+    var randomizeConsentFreshnessInterval = true
 
-    val consentFreshnessOriginalWaitInterval: CustomDuration by config {
-        "org.ice4j.ice.CONSENT_FRESHNESS_WAIT_INTERVAL".from(configSource)
-            .convertFrom<Long> { CustomDuration.ofMillis(it) }
-        "ice4j.consent-freshness.original-wait-interval".from(configSource)
-    }
+    var consentFreshnessOriginalWaitInterval = 500
 
-    val consentFreshnessMaxWaitInterval: CustomDuration by config {
-        "org.ice4j.ice.CONSENT_FRESHNESS_MAX_WAIT_INTERVAL".from(configSource)
-            .convertFrom<Long> { CustomDuration.ofMillis(it) }
-        "ice4j.consent-freshness.max-wait-interval".from(configSource)
-    }
+    var consentFreshnessMaxWaitInterval = 500
 
-    val maxConsentFreshnessRetransmissions: Int by config {
-        "org.ice4j.ice.CONSENT_FRESHNESS_MAX_RETRANSMISSIONS".from(configSource)
-        "ice4j.consent-freshness.max-retransmissions".from(configSource)
-    }
+    var maxConsentFreshnessRetransmissions: Int = 30
 
-    val terminationDelay: CustomDuration by config {
-        "org.ice4j.TERMINATION_DELAY".from(configSource)
-            .convertFrom<Long> { CustomDuration.ofMillis(it) }
-        "ice4j.ice.termination-delay".from(configSource)
-    }
+    var terminationDelay = 3 * 1000
 
-    val maxCheckListSize: Int by config {
-        "org.ice4j.MAX_CHECK_LIST_SIZE".from(configSource)
-        "ice4j.ice.max-check-list-size".from(configSource)
-    }
+    var maxCheckListSize: Int = 100
 
     /** The value of the SOFTWARE attribute that ice4j should include in all outgoing messages. */
-    val software: String? by config {
-        "org.ice4j.SOFTWARE".from(configSource)
-        "ice4j.software".from(configSource)
-    }
+    var software: String? = "ice4j.org"
 
     /** Whether remote IP addresses should be redacted in logs */
-    val redactRemoteAddresses: Boolean by config {
-        "org.ice4j.REDACT_REMOTE_ADDRESSES".from(configSource)
-        "ice4j.redact-remote-addresses".from(configSource)
-    }
+    var redactRemoteAddresses: Boolean = false
 
     /**
      * Whether the per-component merging socket should be enabled by default (the default value can be
@@ -77,10 +43,7 @@ class AgentConfig {
      * If enabled, the user of the library must use the socket instance provided by [Component.getSocket]. Otherwise,
      * the socket instance from the desired [CandidatePair] must be used.
      */
-    val useComponentSocket: Boolean by config {
-        "org.ice4j.ice.USE_COMPONENT_SOCKET".from(configSource)
-        "ice4j.use-component-socket".from(configSource)
-    }
+    var useComponentSocket: Boolean = true
 
     companion object {
         @JvmField
