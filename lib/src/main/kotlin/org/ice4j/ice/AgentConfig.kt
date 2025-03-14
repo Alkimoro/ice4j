@@ -17,13 +17,13 @@
 package org.ice4j.ice
 
 import org.jitsi.metaconfig.config
-import java.time.Duration
+import org.ice4j.util.CustomDuration
 import org.jitsi.config.JitsiConfig.Companion.newConfig as configSource
 
 class AgentConfig {
-    val consentFreshnessInterval: Duration by config {
+    val consentFreshnessInterval: CustomDuration by config {
         "org.ice4j.ice.CONSENT_FRESHNESS_INTERVAL".from(configSource)
-            .convertFrom<Long> { Duration.ofMillis(it) }
+            .convertFrom<Long> { CustomDuration.ofMillis(it) }
         "ice4j.consent-freshness.interval".from(configSource)
     }
 
@@ -31,15 +31,15 @@ class AgentConfig {
         "ice4j.consent-freshness.randomize-interval".from(configSource)
     }
 
-    val consentFreshnessOriginalWaitInterval: Duration by config {
+    val consentFreshnessOriginalWaitInterval: CustomDuration by config {
         "org.ice4j.ice.CONSENT_FRESHNESS_WAIT_INTERVAL".from(configSource)
-            .convertFrom<Long> { Duration.ofMillis(it) }
+            .convertFrom<Long> { CustomDuration.ofMillis(it) }
         "ice4j.consent-freshness.original-wait-interval".from(configSource)
     }
 
-    val consentFreshnessMaxWaitInterval: Duration by config {
+    val consentFreshnessMaxWaitInterval: CustomDuration by config {
         "org.ice4j.ice.CONSENT_FRESHNESS_MAX_WAIT_INTERVAL".from(configSource)
-            .convertFrom<Long> { Duration.ofMillis(it) }
+            .convertFrom<Long> { CustomDuration.ofMillis(it) }
         "ice4j.consent-freshness.max-wait-interval".from(configSource)
     }
 
@@ -48,9 +48,9 @@ class AgentConfig {
         "ice4j.consent-freshness.max-retransmissions".from(configSource)
     }
 
-    val terminationDelay: Duration by config {
+    val terminationDelay: CustomDuration by config {
         "org.ice4j.TERMINATION_DELAY".from(configSource)
-            .convertFrom<Long> { Duration.ofMillis(it) }
+            .convertFrom<Long> { CustomDuration.ofMillis(it) }
         "ice4j.ice.termination-delay".from(configSource)
     }
 

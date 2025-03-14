@@ -198,7 +198,7 @@ public class CandidateHarvesterSet
             {
                 try
                 {
-                    future.get(HarvestConfig.config.timeout().toMillis(), TimeUnit.MILLISECONDS);
+                    future.get(HarvestConfig.config.timeout(), TimeUnit.MILLISECONDS);
                     break;
                 }
                 catch (TimeoutException te)

@@ -22,7 +22,6 @@ import org.jitsi.metaconfig.config
 import org.jitsi.metaconfig.optionalconfig
 import org.jitsi.utils.logging2.createLogger
 import java.net.InetAddress
-import java.time.Duration
 import org.jitsi.config.JitsiConfig.Companion.newConfig as configSource
 
 class HarvestConfig {
@@ -60,11 +59,7 @@ class HarvestConfig {
     }
     fun useDynamicPorts() = useDynamicPorts
 
-    val timeout: Duration by config {
-        "org.ice4j.ice.harvest.HARVESTING_TIMEOUT".from(configSource)
-            .convertFrom<Long> { Duration.ofSeconds(it) }
-        "ice4j.harvest.timeout".from(configSource)
-    }
+    var timeout = 90 * 1000
     fun timeout() = timeout
 
     val stunMappingCandidateHarvesterAddresses: List<String> by config {
