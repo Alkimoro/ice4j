@@ -3,6 +3,7 @@ kotlin = "1.9.25"
 jitsi-utils = "3.2-link-android-1"
 jicoco-config = "1.1-127-gf49982f"
 jetbrains-kotlin-jvm = "1.9.25"
+agp = "7.4.2"
 
 [libraries]
 jitsi-utils = { group = "com.github.Alkimoro", name = "jitsi-utils", version.ref = "jitsi-utils" }
@@ -13,3 +14,4 @@ sdp = { group = "org.opentelecoms.sdp", name = "java-sdp-nist-bridge", version =
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }
+android-library = { id = "com.android.library", version.ref = "agp" }
